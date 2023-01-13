@@ -9,8 +9,8 @@ const ArticlesList = () => {
   return (
     <Grid container spacing={5} alignItems="stretch">
       {articles.map((article) => (
-        <Grid item xs={12} md={4} key={article.id}>
-          <ArticleCard />
+        <Grid item xs={12} md={4} key={article.id} display="flex">
+          <ArticleCard article={article} />
         </Grid>
       ))}
     </Grid>
