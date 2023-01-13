@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
 :root {
-  font-family: "Montsserat", sans-serif;
-  font-size: 1em;
-  line-height: 1.5em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 400;
+}
+
+body {
+  margin: 0;
 }
