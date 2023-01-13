@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Box, Typography, Input, Divider, InputAdornment } from "@mui/material";
 import styles from "./FilterSearch.module.scss";
 import { searchIcon } from "../../../assets";
+import { useAppSelector } from "../../../hooks/redux";
 
 const FilterSearch = () => {
+  const articlesAmount = useAppSelector(
+    (state) => state.articles.articles.length
+  );
   const [searchInput, setSearchInput] = useState("");
 
   return (
@@ -22,7 +26,7 @@ const FilterSearch = () => {
           </InputAdornment>
         }
       />
-      <Typography variant="h2">Results:</Typography>
+      <Typography variant="h2">Results: {articlesAmount}</Typography>
       <Divider className={styles.resultsDivider} />
     </Box>
   );

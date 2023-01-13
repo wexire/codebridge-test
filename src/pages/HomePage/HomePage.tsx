@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { fetchArticles } from "../../store/actions/articles";
 import { AppDispatch } from "../../store";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import ArticlesList from "../../components/Homepage/ArticlesList/ArticlesList";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ const HomePage = () => {
   return (
     <Box className={styles.container}>
       <FilterSearch />
+      <ArticlesList />
     </Box>
   );
 };
