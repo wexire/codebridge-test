@@ -1,4 +1,9 @@
 .container {
   margin: 3rem 4.5rem 3.5rem;
   padding: 0;
+
+  @media (max-width: 767px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 }

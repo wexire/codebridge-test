@@ -5,13 +5,11 @@ import { arrowIcon, dateIcon } from "../../../../assets";
 import { IArticle } from "../../../../types";
 import styles from "./ArticleCard.module.scss";
 
-const ArticleCard = ({ article }: { article: IArticle }) => {
+const ArticleCard = ({ article }: ArticleCardProps) => {
   const shortenDescription = (text: string) => {
-    const LIMIT = 20;
+    const LIMIT = 100;
 
-    return text.split(" ").length > LIMIT
-      ? text.split(" ").slice(0, LIMIT).join(" ") + "..."
-      : text;
+    return text.length > LIMIT ? text.slice(0, LIMIT) + "..." : text;
   };
 
   return (
@@ -41,6 +39,10 @@ const ArticleCard = ({ article }: { article: IArticle }) => {
       </div>
     </Card>
   );
+};
+
+type ArticleCardProps = {
+  article: IArticle;
 };
 
 export default ArticleCard;

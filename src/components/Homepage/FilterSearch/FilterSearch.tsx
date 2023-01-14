@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Typography, Input, Divider, InputAdornment } from "@mui/material";
 import styles from "./FilterSearch.module.scss";
 import { searchIcon } from "../../../assets";
 import { useAppSelector } from "../../../hooks/redux";
 
-const FilterSearch = () => {
+const FilterSearch = ({ searchInput, setSearchInput }: FilterSearchProps) => {
   const articlesAmount = useAppSelector(
     (state) => state.articles.articles.length
   );
-  const [searchInput, setSearchInput] = useState("");
 
   return (
     <Box>
       <Typography variant="h2">Filter by keywords</Typography>
       <Input
+        autoFocus
         className={styles.searchField}
         value={searchInput}
         onChange={(e) => {
@@ -30,6 +30,11 @@ const FilterSearch = () => {
       <Divider className={styles.resultsDivider} />
     </Box>
   );
+};
+
+type FilterSearchProps = {
+  searchInput: string;
+  setSearchInput: (value: string) => void;
 };
 
 export default FilterSearch;
