@@ -4,8 +4,9 @@ import React from "react";
 import { arrowIcon, dateIcon } from "../../../../assets";
 import { IArticle } from "../../../../types";
 import styles from "./ArticleCard.module.scss";
+import Highlighter from "react-highlight-words";
 
-const ArticleCard = ({ article }: ArticleCardProps) => {
+const ArticleCard = ({ article, keywords }: ArticleCardProps) => {
   const shortenDescription = (text: string) => {
     const LIMIT = 100;
 
@@ -27,10 +28,20 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           </Typography>
         </div>
         <Typography variant="h1" className={styles.title}>
-          {article.title}
+          <Highlighter
+            highlightClassName={styles.highlightKeywords}
+            searchWords={keywords}
+            autoEscape={true}
+            textToHighlight={article.title}
+          />
         </Typography>
         <Typography variant="h4" className={styles.description}>
-          {shortenDescription(article.summary)}
+          <Highlighter
+            highlightClassName={styles.highlightKeywords}
+            searchWords={keywords}
+            autoEscape={true}
+            textToHighlight={shortenDescription(article.summary)}
+          />
         </Typography>
         <div className={styles.cardFooter}>
           <Typography variant="h3">Read More</Typography>
@@ -43,6 +54,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
 type ArticleCardProps = {
   article: IArticle;
+  keywords: string[];
 };
 
 export default ArticleCard;

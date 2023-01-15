@@ -6,7 +6,7 @@ import { useAppSelector } from "../../../hooks/redux";
 
 const FilterSearch = ({ searchInput, setSearchInput }: FilterSearchProps) => {
   const articlesAmount = useAppSelector(
-    (state) => state.articles.articles.length
+    (state) => state.articles.totalArticles
   );
 
   return (
