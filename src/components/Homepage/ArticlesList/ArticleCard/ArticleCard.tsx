@@ -5,8 +5,11 @@ import { arrowIcon, dateIcon } from "../../../../assets";
 import { IArticle } from "../../../../types";
 import styles from "./ArticleCard.module.scss";
 import Highlighter from "react-highlight-words";
+import { useNavigate } from "react-router-dom";
 
 const ArticleCard = ({ article, keywords }: ArticleCardProps) => {
+  const navigate = useNavigate();
+
   const shortenDescription = (text: string) => {
     const LIMIT = 100;
 
@@ -23,7 +26,7 @@ const ArticleCard = ({ article, keywords }: ArticleCardProps) => {
       <div className={styles.container}>
         <div className={styles.cardDate}>
           <img src={dateIcon} alt="dateIcon" />
-          <Typography variant="h5">
+          <Typography variant="h6">
             {moment(article.publishedAt).format("MMMM Do, YYYY")}
           </Typography>
         </div>
@@ -43,7 +46,10 @@ const ArticleCard = ({ article, keywords }: ArticleCardProps) => {
             textToHighlight={shortenDescription(article.summary)}
           />
         </Typography>
-        <div className={styles.cardFooter}>
+        <div
+          className={styles.cardFooter}
+          onClick={() => navigate(`/${article.id}`)}
+        >
           <Typography variant="h3">Read More</Typography>
           <img src={arrowIcon} alt="arrowIcon" />
         </div>

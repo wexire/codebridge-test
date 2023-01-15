@@ -1,0 +1,11 @@
+.returnButton {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  margin-left: 4.5rem;
+  cursor: pointer;
+}
+
+.returnIcon {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}

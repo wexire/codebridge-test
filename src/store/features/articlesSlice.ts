@@ -5,14 +5,14 @@ import { fetchArticles, fetchOneArticle } from "../actions/articles";
 interface IState {
   articles: IArticle[];
   currentArticle: IArticle | null;
-  loadingStatus: boolean;
+  isLoading: boolean;
   totalArticles: number;
 }
 
 const initialState: IState = {
   articles: [],
   currentArticle: null,
-  loadingStatus: false,
+  isLoading: false,
   totalArticles: 0,
 };
 
@@ -27,19 +27,19 @@ const articlesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticles.fulfilled, (state, action) => {
-        state.loadingStatus = false;
+        state.isLoading = false;
         state.totalArticles = action.payload.length;
         state.articles = action.payload;
       })
       .addCase(fetchOneArticle.fulfilled, (state, action) => {
-        state.loadingStatus = false;
+        state.isLoading = false;
         state.currentArticle = action.payload;
       })
-      .addCase(fetchArticles.pending, (state, action) => {
-        state.loadingStatus = true;
+      .addCase(fetchArticles.pending, (state) => {
+        state.isLoading = true;
       })
-      .addCase(fetchOneArticle.pending, (state, action) => {
-        state.loadingStatus = true;
+      .addCase(fetchOneArticle.pending, (state) => {
+        state.isLoading = true;
       });
   },
 });
